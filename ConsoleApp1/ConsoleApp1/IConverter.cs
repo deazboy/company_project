@@ -8,6 +8,6 @@ namespace ConsoleApp1
 {
     public interface IConverter
     {
-        void ConvertDate(string symbol, string vinput1, string vinput2);
+        double ConvertData(string vinput);
     }
 }

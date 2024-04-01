@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,43 +10,43 @@ namespace ConsoleApp1
 {
     public class Calculator : ICalculator //основная логика калькулятора
     {
-        double result;
-        public void Calculate(string symbol, double b, double b1)
+        private readonly ILogger<Calculator> _logger;
+        public Calculator(ILoggerFactory loggerFactory)
         {
-            char s = symbol[0];
-            //if (s != '/' | s != '+' | s != '-' | s != '*')
-            //{
-            //    throw new Exception("Символ введен неправильно!");
-            //}
+            _logger = loggerFactory.CreateLogger<Calculator>();
+        }
+        double result;
+        public void Calculate(string symbol, double num1, double num2)
+        {
+            char s = symbol[0];            
             if (s == '+')
             {
-                result = b + b1;
-                Console.WriteLine($"Сумма ваших чисел равна: {result} ");
+                result = num1 + num2;
+                _logger.LogInformation($"Сумма ваших чисел равна: {result} ");
             }
             else if (s == '-')
             {
-                result = b - b1;
-                Console.WriteLine($"Разность ваших чисел равна: {result} ");
+                result = num1 - num2;
+                _logger.LogInformation($"Разность ваших чисел равна: {result} ");
             }
             else if (s == '/')
             {
-                if (b1 == 0)
+                if (num2 == 0)
                 {
-                    Console.WriteLine("Делить на 0 нельзя!");
+                    _logger.LogInformation("Делить на 0 нельзя!");
                 }
                 else
                 {
-                    result = b / b1;
-                    Console.WriteLine($"Частное ваших чисел равно: {result} ");
+                    result = num1 / num2;
+                    _logger.LogInformation($"Частное ваших чисел равно: {result} ");
                 }
             }
             else if (s == '*')
             {
-                result = (b * b1);
-                Console.WriteLine($"Произведение ваших чисел равно: {result} ");
+                result = (num1 * num2);
+                _logger.LogInformation($"Произведение ваших чисел равно: {result} ");
             }
             else { throw new Exception("Символ введен неправильно!"); }
-            
         }
     }
 }

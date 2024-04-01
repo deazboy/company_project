@@ -8,6 +8,6 @@ namespace ConsoleApp1
 {
     public interface ICalculator
     {
-        void Calculate(string symbol, double b, double b2);
+        void Calculate(string symbol, double num1, double num2);
     }
 }
