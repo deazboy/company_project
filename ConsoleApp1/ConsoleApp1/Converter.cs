@@ -10,8 +10,6 @@ namespace ConsoleApp1
 {
     public class Converter : IConverter//преобразование строки в число и символ
     {
-
-
         public double ConvertData(string vinput)
         {
             CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();

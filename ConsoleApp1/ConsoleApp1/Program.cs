@@ -5,8 +5,6 @@ using Microsoft.Extensions.Logging.Console;
 using ConsoleApp1;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography.X509Certificates;
-
-
 public class Program
 {
     public static void Main(string[] args)
@@ -14,14 +12,12 @@ public class Program
         string vinput1, vinput2;
         string symbol;
 
-
         Console.WriteLine("Введите первое число: ");
         vinput1 = Console.ReadLine();
         Console.WriteLine("Введите знак действия: ");
         symbol = Console.ReadLine();
         Console.WriteLine("Введите второе число: ");
         vinput2 = Console.ReadLine();
-
         var serviceProvider = new ServiceCollection()
             .AddLogging((loggingBuilder) => loggingBuilder
             .SetMinimumLevel(LogLevel.Trace)
@@ -35,10 +31,8 @@ public class Program
         var number2 = _converter.ConvertData(vinput2);
 
         var _calculator = serviceProvider.GetService<ICalculator>();
-        _calculator.Calculate(symbol, number1, number2);
+        var result = _calculator.Calculate(symbol, number1, number2);
+        Console.WriteLine($"Результат: {result}");
+
     }
 }
-
-
-
-

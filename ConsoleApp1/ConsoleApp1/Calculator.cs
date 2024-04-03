@@ -10,43 +10,44 @@ namespace ConsoleApp1
 {
     public class Calculator : ICalculator //основная логика калькулятора
     {
-        private readonly ILogger<Calculator> _logger;
-        public Calculator(ILoggerFactory loggerFactory)
+        private readonly ILogger<Calculator> _logger;       
+        public Calculator(ILogger<Calculator> logger)
         {
-            _logger = loggerFactory.CreateLogger<Calculator>();
+            _logger = logger;
         }
         double result;
-        public void Calculate(string symbol, double num1, double num2)
+        public double Calculate(string symbol, double num1, double num2)
         {
-            char s = symbol[0];            
+            char s = symbol[0];
             if (s == '+')
             {
-                result = num1 + num2;
-                _logger.LogInformation($"Сумма ваших чисел равна: {result} ");
+                result = num1 + num2;               
             }
             else if (s == '-')
             {
                 result = num1 - num2;
-                _logger.LogInformation($"Разность ваших чисел равна: {result} ");
             }
             else if (s == '/')
             {
                 if (num2 == 0)
                 {
-                    _logger.LogInformation("Делить на 0 нельзя!");
+                    _logger.LogError("Делить на 0 нельзя!");
+                    throw new Exception("На 0 делить нельзя!");
                 }
                 else
                 {
-                    result = num1 / num2;
-                    _logger.LogInformation($"Частное ваших чисел равно: {result} ");
+                    result = num1 / num2;                    
                 }
             }
             else if (s == '*')
             {
-                result = (num1 * num2);
-                _logger.LogInformation($"Произведение ваших чисел равно: {result} ");
+                result = (num1 * num2);                
             }
-            else { throw new Exception("Символ введен неправильно!"); }
+            else {
+                _logger.LogError("Символ введен неправильно!");
+                throw new Exception("Символ введен неправильно!"); 
+            }
+            return result;
         }
     }
 }
