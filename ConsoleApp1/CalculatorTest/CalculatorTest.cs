@@ -13,23 +13,79 @@ namespace CalculatorTest
 {    
     public class CalculatorTest
     {
-        [Fact]
-        public void Calс()
+        [Theory]
+        [InlineData("+",3, 5, 8),
+         InlineData("-",8, 5, 3),
+         InlineData("*",3, 5, 15),
+         InlineData("/",6, 2, 3)]        
+        public void CalсAdd(string sign, double a, double b, double res)
         {
             var loggerMock = new Mock<ILogger<Calculator>>();
             var _calculator = new Calculator(loggerMock.Object);
-            double a1 = 3;
-            double b1 = 5;
-            double res = a1 + b1;
-
-            Assert.Equal(res, _calculator.Calculate("+", a1, b1));
-
-
+            Assert.Equal(res, _calculator.Calculate(sign, a, b));
+            Assert.Equal(res, _calculator.Calculate(sign, a, b));
+            Assert.Equal(res, _calculator.Calculate(sign, a, b));
+            Assert.Equal(res, _calculator.Calculate(sign, a, b));
         }
-
-
-
-
+       
+        [Theory]
+        [InlineData("a", 6, 2, 3),
+         InlineData("/", 6, 0, 3)]
+        public void CalсErr(string sign, double a, double b, double res)
+        {
+            var loggerMock = new Mock<ILogger<Calculator>>();
+            var _calculator = new Calculator(loggerMock.Object);
+            Assert.Throws<Exception>(() => _calculator.Calculate(sign, a, b));
+            Assert.Throws<Exception>(() => _calculator.Calculate(sign, a, b));
+        }       
+        //[Theory]
+        //[InlineData(3, 5, 8)]
+        //public void CalсAdd(double a, double b, double res)
+        //{
+        //    var loggerMock = new Mock<ILogger<Calculator>>();
+        //    var _calculator = new Calculator(loggerMock.Object);
+        //    Assert.Equal(res, _calculator.Calculate("+", a, b));
+        //}
+        //[Theory]
+        //[InlineData(8, 5, 3)]
+        //public void CalсDiff(double a, double b, double res)
+        //{
+        //    var loggerMock = new Mock<ILogger<Calculator>>();
+        //    var _calculator = new Calculator(loggerMock.Object);
+        //    Assert.Equal(res, _calculator.Calculate("-", a, b));
+        //}
+        //[Theory]
+        //[InlineData(3, 5, 15)]
+        //public void CalсMult(double a, double b, double res)
+        //{
+        //    var loggerMock = new Mock<ILogger<Calculator>>();
+        //    var _calculator = new Calculator(loggerMock.Object);
+        //    Assert.Equal(res, _calculator.Calculate("*", a, b));
+        //}
+        //[Theory]
+        //[InlineData(6, 2, 3)]
+        //public void CalсDiv(double a, double b, double res)
+        //{
+        //    var loggerMock = new Mock<ILogger<Calculator>>();
+        //    var _calculator = new Calculator(loggerMock.Object);
+        //    Assert.Equal(res, _calculator.Calculate("/", a, b));
+        //}
+        //[Theory]
+        //[InlineData(6, 2, 3)]
+        //public void CalсErr(double a, double b, double res)
+        //{
+        //    var loggerMock = new Mock<ILogger<Calculator>>();
+        //    var _calculator = new Calculator(loggerMock.Object);
+        //    Assert.Throws<Exception>(() => _calculator.Calculate("a", a, b));
+        //}
+        //[Theory]
+        //[InlineData(6, 0, 3)]
+        //public void CalсDivO(double a, double b, double res)
+        //{
+        //    var loggerMock = new Mock<ILogger<Calculator>>();
+        //    var _calculator = new Calculator(loggerMock.Object);
+        //    Assert.Throws<Exception>(() => _calculator.Calculate("/", a, b));
+        //}
 
     }
 }
