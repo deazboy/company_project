@@ -37,6 +37,6 @@ namespace CalculatorTest
             var _calculator = new Calculator(loggerMock.Object);
             Assert.Throws<Exception>(() => _calculator.Calculate(sign, a, b));
             Assert.Throws<Exception>(() => _calculator.Calculate(sign, a, b));
-        }       
+        }              
     }
 }
