@@ -1,4 +1,5 @@
 using ConsoleApp1;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting.WindowsServices;
 using System.Reflection;
 
@@ -52,8 +53,15 @@ app.UseSwaggerUI(options =>
 });
 app.MapControllers();
 
-app.UseStaticFiles();
+
+
 app.UseDefaultFiles();
+
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot"))
+});
 
 //logger.Info($"{appName} is starting at {DateTime.UtcNow:O}");
 

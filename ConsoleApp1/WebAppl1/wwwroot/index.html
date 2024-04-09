@@ -22,28 +22,29 @@
             <input id="v1" type="number" />
         </p>
         <p>
+            Знак:<br />
+            <button id="plus" class="operator" onclick="op='+'">+</button>
+            <button id="minus" class="operator" onclick="op='-'">-</button>
+            <button id="times" class="operator" onclick="op='*'">x</button>
+            <button id="divide" class="operator" onclick="op='/'">:</button>            
+        </p>
+        <p>
             Второе значение:<br />
             <input id="v2" type="number" />
         </p>
         <p>
-            Знак:<br />
-            <input id="symbol" type="text" />
+            <button onclick="func()">Вычислить</button>
         </p>
-        <p>
-            Результат:<br />
-            <input id="result" type="number" />
-        </p>
-        <p>
-            <button id="saveBtn">Вычислить</button>
-        </p>
+            Результат:<br /> 
+            <p id="result"></p>
     </div>
 
     <script>
-        var op; //выбранный оператор
-        function func() {
-            var result;
-            var num1 = Number(document.getElementById("num1").value);
-            var num2 = Number(document.getElementById("num2").value);
+        var op; 
+        function func() {        
+            var result;  
+            var num1 = Number(document.getElementById("v1").value);
+            var num2 = Number(document.getElementById("v2").value);
             switch (op) {
                 case '+':
                     result = num1 + num2;
@@ -63,6 +64,9 @@
                     break;
                 default:
                     result = 'выберите операцию';
+            }
+            document.getElementById("result").innerHTML = result;
+        } 
     </script>
 </body>
 </html>
