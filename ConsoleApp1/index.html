@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>METANIT.COM</title>
+    <style>
+        td {
+            padding: 5px;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Калькулятор</h2>
+    <div>
+        <input type="hidden" id="userId" />
+        <p>
+            Первое значение:<br />
+            <input id="v1" type="number" />
+        </p>
+        <p>
+            Второе значение:<br />
+            <input id="v2" type="number" />
+        </p>
+        <p>
+            Знак:<br />
+            <input id="symbol" type="text" />
+        </p>
+        <p>
+            Результат:<br />
+            <input id="result" type="number" />
+        </p>
+        <p>
+            <button id="saveBtn">Вычислить</button>
+        </p>
+    </div>
+
+    <script>
+        var op; //выбранный оператор
+        function func() {
+            var result;
+            var num1 = Number(document.getElementById("num1").value);
+            var num2 = Number(document.getElementById("num2").value);
+            switch (op) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2) {
+                        result = num1 / num2;
+                    } else {
+                        result = 'бесконечность';
+                    }
+                    break;
+                default:
+                    result = 'выберите операцию';
+    </script>
+</body>
+</html>
