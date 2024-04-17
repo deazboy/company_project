@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorTest", "Calculato
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConverterTest", "ConverterTest\ConverterTest.csproj", "{5E923FB3-FABD-4430-AC83-5DA4A856577D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppl1", "WebAppl1\WebAppl1.csproj", "{2BCED52D-1115-4797-8733-725218FB0577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppl1", "WebAppl1\WebAppl1.csproj", "{2BCED52D-1115-4797-8733-725218FB0577}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

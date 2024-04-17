@@ -1,7 +1,7 @@
 using ConsoleApp1;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace WebAppl1.Controllers
 {
     [ApiController]
     [Route("[controller]")]

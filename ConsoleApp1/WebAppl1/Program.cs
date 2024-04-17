@@ -2,6 +2,8 @@ using ConsoleApp1;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting.WindowsServices;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using WebAppl1.Models;
 
 
 var options = new WebApplicationOptions { Args = args, ContentRootPath = WindowsServiceHelpers.IsWindowsService() ? AppContext.BaseDirectory : default };
@@ -10,6 +12,11 @@ var builder = WebApplication.CreateBuilder(options);
 //as service
 builder.Host.UseWindowsService();
 
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+
+builder.Services.AddControllersWithViews();
 //Log
 //builder.Host.ConfigureLogging(logging =>
 //{

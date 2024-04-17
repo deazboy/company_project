@@ -26,7 +26,7 @@
             <button id="plus" class="operator" onclick="op='+'">+</button>
             <button id="minus" class="operator" onclick="op='-'">-</button>
             <button id="times" class="operator" onclick="op='*'">x</button>
-            <button id="divide" class="operator" onclick="op='/'">:</button>            
+            <button id="divide" class="operator" onclick="op='/'">:</button>
         </p>
         <p>
             Второе значение:<br />
@@ -35,14 +35,29 @@
         <p>
             <button onclick="func()">Вычислить</button>
         </p>
-            Результат:<br /> 
-            <p id="result"></p>
+        Результат:<br />
+        <p id="result"></p>
+        <p>
+            Данные:<br />
+        <p id="data"></p>
+        <table class="table">
+            <tr><th>Первое число</th><th>Второе число</th><th>Знак</th><th>Результат</th></tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.number1</td>
+                <td>@item.number2</td>
+                <td>@item.symbol</td>
+                <td>@item.result</td>
+            </tr>
+            }
+        </table>
     </div>
 
     <script>
-        var op; 
-        function func() {        
-            var result;  
+        var op;
+        function func() {
+            var result;
             var num1 = Number(document.getElementById("v1").value);
             var num2 = Number(document.getElementById("v2").value);
             switch (op) {
@@ -66,7 +81,7 @@
                     result = 'выберите операцию';
             }
             document.getElementById("result").innerHTML = result;
-        } 
+        }
     </script>
 </body>
 </html>
